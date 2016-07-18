@@ -187,7 +187,7 @@ class JDatabaseMySQL extends JDatabase
 	public function connected()
 	{
 		if (is_resource($this->connection)) {
-			return mysql_ping($this->connection);
+			return mysqli_ping($this->connection);
 		}
 
 		return false;
