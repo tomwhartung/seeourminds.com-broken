@@ -150,7 +150,13 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function escape($text, $extra = false)
 	{
-		$result = mysql_real_escape_string($text, $this->getConnection());
+	//	$result = mysql_real_escape_string($text, $this->getConnection());
+		if (PHP_MAJOR_VERSION < 7) {
+			$result = mysql_real_escape_string($text, $this->getConnection());
+		}
+		else {
+			$result = mysqli_real_escape_string( $this->getConnection(), $text );
+		}
 
 		if ($extra) {
 			$result = addcslashes($result, '%_');
