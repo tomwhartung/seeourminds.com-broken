@@ -134,7 +134,7 @@ class JDatabaseMySQL extends JDatabase
 	public function __destruct()
 	{
 		if (is_resource($this->connection)) {
-			mysql_close($this->connection);
+			mysqli_close($this->connection);
 		}
 	}
 
@@ -478,6 +478,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function query()
 	{
+// echo 'mysql.php - query() checkpoint 1<br />';
 		if (!is_resource($this->connection)) {
 
 			// Legacy error handling switch based on the JError::$legacy switch.
