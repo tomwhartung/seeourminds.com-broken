@@ -5,28 +5,27 @@ configuration.php
 idMyGadget
 resume
 
-language/en-GB/en-GB.mod_demo_idmygadget.ini
-language/en-GB/en-GB.mod_demo_idmygadget.sys.ini
-language/en-GB/en-GB.mod_menu_idmygadget.ini
-language/en-GB/en-GB.mod_menu_idmygadget.sys.ini
-language/en-GB/en-GB.tpl_jmws_beez3_idmygadget.ini
-language/en-GB/en-GB.tpl_jmws_beez3_idmygadget.sys.ini
-language/en-GB/en-GB.tpl_jmws_protostar_idmygadget.ini
-language/en-GB/en-GB.tpl_jmws_protostar_idmygadget.sys.ini
-language/en-GB/en-GB.tpl_jmws_protostar_tomh_idMyGadget.ini
-language/en-GB/en-GB.tpl_jmws_protostar_tomh_idMyGadget.sys.ini
+administrator/components/com_groja
+administrator/components/com_joomoocomments
+administrator/components/com_joomoogallery
+administrator/components/com_joomoorating
+administrator/components/com_joomoositestyle
+administrator/components/com_joomoouser
 
-libraries/vendor/jmws_idMyGadget_for_joomla
+components/com_groja
+components/com_joomoocomments
+components/com_joomoogallery
+components/com_joomoorating
+components/com_joomoositestyle
+components/com_joomoouser
 
-modules/mod_demo_idmygadget
-modules/mod_menu_idmygadget
+language/en-GB/en-GB.mod_joomoouser_login.ini
+language/en-GB/en-GB.mod_joomoouser_login.sys.ini
 
-templates/jmws_beez3_idmygadget
-templates/jmws_beez3_idmygadget/
-templates/jmws_protostar_idmygadget
-templates/jmws_protostar_idmygadget/
-templates/jmws_protostar_tomh_idMyGadget
-templates/jmws_protostar_tomh_idMyGadget/
+modules/mod_joomoositestyle
+modules/mod_joomoouser_login
+
+templates/joomoositestyle
 
 /cache/
 /logs/
