@@ -70,7 +70,7 @@ class JDatabaseMySQL extends JDatabase
 		$options['select']   = (isset($options['select'])) ? (bool) $options['select'] : true;
 
 		// Make sure the MySQL extension for PHP is installed and enabled.
-		if (!function_exists('mysql_connect')) {
+		if (!function_exists('mysqli_connect')) {
 
 			// Legacy error handling switch based on the JError::$legacy switch.
 			// @deprecated  12.1
@@ -85,8 +85,14 @@ class JDatabaseMySQL extends JDatabase
 		}
 
 		// Attempt to connect to the server.
-		if (!($this->connection = @ mysql_connect($options['host'], $options['user'], $options['password'], true))) {
-
+	//	if (!($this->connection = @ mysql_connect($options['host'], $options['user'], $options['password'], true))) {
+		if ( PHP_MAJOR_VERSION < 7 ) {
+			$this->connection = @ mysql_connect( $options['host'], $options['user'], $options['password'], true );
+		}
+		else {
+			$this->connection = @ mysqli_connect( $options['host'], $options['user'], $options['password'] );
+		}
+		if ( ! $this->connection ) {
 			// Legacy error handling switch based on the JError::$legacy switch.
 			// @deprecated  12.1
 			if (JError::$legacy) {
@@ -155,7 +161,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public static function test()
 	{
-		return (function_exists('mysql_connect'));
+		return (function_exists('mysqli_connect'));
 	}
 
 	/**
