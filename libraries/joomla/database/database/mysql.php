@@ -109,7 +109,14 @@ class JDatabaseMySQL extends JDatabase
 		parent::__construct($options);
 
 		// Set sql_mode to non_strict mode
-		mysql_query("SET @@SESSION.sql_mode = '';", $this->connection);
+	//	mysql_query("SET @@SESSION.sql_mode = '';", $this->connection);
+		if (PHP_MAJOR_VERSION < 7) {
+			mysql_query("SET @@SESSION.sql_mode = '';", $this->connection);
+		}
+		else {
+			mysqli_query( $this->connection, "SET @@SESSION.sql_mode = '';" );
+		}
+
 
 		// If auto-select is enabled select the given database.
 		if ($options['select'] && !empty($options['database'])) {
@@ -503,7 +510,13 @@ class JDatabaseMySQL extends JDatabase
 		$this->errorMsg = '';
 
 		// Execute the query.
-		$this->cursor = mysql_query($sql, $this->connection);
+	//	$this->cursor = mysql_query($sql, $this->connection);
+		if (PHP_MAJOR_VERSION < 7) {
+			$this->cursor = mysql_query($sql, $this->connection);
+		}
+		else {
+			$this->cursor = mysqli_query($this->connection, $sql );
+		}
 
 		// If an error occurred handle it.
 		if (!$this->cursor) {
@@ -576,7 +589,13 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function setUTF()
 	{
-		return mysql_query("SET NAMES 'utf8'", $this->connection);
+	//	return mysql_query("SET NAMES 'utf8'", $this->connection);
+		if ( PHP_MAJOR_VERSION < 7 ) {
+			return mysql_query("SET NAMES 'utf8'", $this->connection);
+		}
+		else {
+			return mysqli_query( $this->connection, "SET NAMES 'utf8'" );
+		}
 	}
 
 	/**
@@ -762,7 +781,14 @@ class JDatabaseMySQL extends JDatabase
 		{
 			$query = trim($query);
 			if ($query != '') {
-				$this->cursor = mysql_query($query, $this->connection);
+			//	$this->cursor = mysql_query($query, $this->connection);
+				if (PHP_MAJOR_VERSION < 7) {
+					$this->cursor = mysql_query($query, $this->connection);
+				}
+				else {
+					$this->cursor = mysqli_query( $this->connection, $query );
+				}
+
 				if ($this->debug) {
 					$this->count++;
 					$this->log[] = $query;
