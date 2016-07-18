@@ -427,7 +427,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function getVersion()
 	{
-		return mysql_get_server_info($this->connection);
+		return mysqli_get_server_info($this->connection);
 	}
 
 	/**
