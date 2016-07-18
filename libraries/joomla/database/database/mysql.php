@@ -544,8 +544,14 @@ class JDatabaseMySQL extends JDatabase
 			return false;
 		}
 
-		if (!mysql_select_db($database, $this->connection)) {
-
+	//	if (!mysql_select_db($database, $this->connection)) {
+		if ( PHP_MAJOR_VERSION < 7 ) {
+			$databaseSelectedOk = mysql_select_db($database, $this->connection);
+		}
+		else {
+			$databaseSelectedOk = mysqli_select_db($this->connection,$database);
+		}
+		if ( ! $databaseSelectedOk ) {
 			// Legacy error handling switch based on the JError::$legacy switch.
 			// @deprecated  12.1
 			if (JError::$legacy) {
