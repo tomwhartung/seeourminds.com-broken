@@ -8828,7 +8828,7 @@ class SimplePie_Cache_MySQL extends SimplePie_Cache_DB
 			$password = null;
 		}
 
-		if ($this->mysql = mysql_connect($server, $username, $password))
+		if ($this->mysql = mysqli_connect($server, $username, $password))
 		{
 			$this->id = $name . $extension;
 			$this->options = SimplePie_Misc::parse_str($mysql_location->get_query());
