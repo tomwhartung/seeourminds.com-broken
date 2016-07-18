@@ -8837,7 +8837,8 @@ class SimplePie_Cache_MySQL extends SimplePie_Cache_DB
 				$this->options['prefix'][0] = '';
 			}
 
-			if (mysql_select_db(ltrim($mysql_location->get_path(), '/'))
+			// if (mysql_select_db(ltrim($mysql_location->get_path(), '/'))
+			if (mysqli_select_db($this->mysql, ltrim($mysql_location->get_path(), '/'))
 				&& mysql_query('SET NAMES utf8')
 				&& ($query = mysql_unbuffered_query('SHOW TABLES')))
 			{
