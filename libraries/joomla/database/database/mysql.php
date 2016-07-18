@@ -526,7 +526,7 @@ class JDatabaseMySQL extends JDatabase
 
 		// If an error occurred handle it.
 		if (!$this->cursor) {
-			$this->errorNum = (int) mysql_errno($this->connection);
+			$this->errorNum = (int) mysqli_errno($this->connection);
 			$this->errorMsg = (string) mysql_error($this->connection).' SQL='.$sql;
 
 			// Legacy error handling switch based on the JError::$legacy switch.
@@ -801,7 +801,7 @@ class JDatabaseMySQL extends JDatabase
 				}
 				if (!$this->cursor) {
 					$error = 1;
-					$this->errorNum .= mysql_errno($this->connection) . ' ';
+					$this->errorNum .= mysqli_errno($this->connection) . ' ';
 					$this->errorMsg .= mysql_error($this->connection)." SQL=$query <br />";
 					if ($abortOnError) {
 						return $this->cursor;
