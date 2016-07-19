@@ -658,7 +658,13 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	protected function fetchArray($cursor = null)
 	{
-		return mysql_fetch_row($cursor ? $cursor : $this->cursor);
+	//	return mysql_fetch_row($cursor ? $cursor : $this->cursor);
+		if ( PHP_MAJOR_VERSION < 7 ) {
+			return mysql_fetch_row($cursor ? $cursor : $this->cursor);
+		}
+		else {
+			return mysqli_fetch_row($cursor ? $cursor : $this->cursor);
+		}
 	}
 
 	/**
@@ -687,7 +693,13 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	protected function fetchObject($cursor = null, $class = 'stdClass')
 	{
-		return mysql_fetch_object($cursor ? $cursor : $this->cursor, $class);
+	//	return mysql_fetch_object($cursor ? $cursor : $this->cursor, $class);
+		if ( PHP_MAJOR_VERSION < 7 ) {
+			return mysql_fetch_object($cursor ? $cursor : $this->cursor, $class);
+		}
+		else {
+			return mysqli_fetch_object($cursor ? $cursor : $this->cursor, $class);
+		}
 	}
 
 	/**
