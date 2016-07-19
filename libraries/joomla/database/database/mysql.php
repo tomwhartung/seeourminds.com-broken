@@ -672,7 +672,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	protected function fetchAssoc($cursor = null)
 	{
-		return mysql_fetch_assoc($cursor ? $cursor : $this->cursor);
+		return mysqli_fetch_assoc($cursor ? $cursor : $this->cursor);
 	}
 
 	/**
@@ -701,7 +701,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	protected function freeResult($cursor = null)
 	{
-		mysql_free_result($cursor ? $cursor : $this->cursor);
+		mysqli_free_result($cursor ? $cursor : $this->cursor);
 	}
 
 	/**
