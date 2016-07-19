@@ -48,7 +48,8 @@ libraries/simplepie/simplepie.php
 | Y | mysql_ping | mysqli_ping | mysql.php | Used in only one place |
 | Y | mysql_insert_id | mysqli_insert_id | mysql.php | Used in only one place |
 | Y | mysql_error | mysqli_error | mysql.php | Changed both of two uses |
-| | mysql_ | mysqli_
+| Y | mysql_fetch_assoc | mysqli_fetch_assoc | mysql.php | Used in only one place |
+| Y | mysql_free_result | mysqli_free_result | mysql.php | Used in only one place |
 | | | | | | |
 | Y | mysql_affected_rows | mysqli_affected_rows | mysql.php | Used in only one place |
 | Y | mysql_affected_rows | mysqli_affected_rows | simplepie.php | Used in only one place |
@@ -56,6 +57,7 @@ libraries/simplepie/simplepie.php
 | Y | mysql_num_rows | mysqli_num_rows | mysql.php | Used in only one place |
 | Y | mysql_num_rows | mysqli_num_rows | simplepie.php | Changed both of two uses |
 | | | | | | |
+| Y | mysql_ | mysqli_
 | | | | | | |
 | | | | | | |
 | | | | | | |
@@ -83,6 +85,11 @@ http://php.net/manual/en/function.mysql-affected-rows.php
 http://php.net/manual/en/function.mysql-num-rows.php
 http://php.net/manual/en/function.mysql-insert-id.php
 http://php.net/manual/en/function.mysql-error.php
+http://php.net/manual/en/function.mysql-fetch-assoc.php
+http://php.net/manual/en/function.mysql-free-result.php
+
+http://php.net/manual/en/function.mysql-fetch-row.php
+http://php.net/manual/en/function.mysql-fetch-object.php
 
 
 http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
@@ -97,5 +104,11 @@ http://php.net/manual/en/mysqli.affected-rows.php
 http://php.net/manual/en/mysqli-result.num-rows.php
 http://php.net/manual/en/mysqli.insert-id.php
 http://php.net/manual/en/mysqli.error.php
+http://php.net/manual/en/mysqli-result.fetch-assoc.php
+http://php.net/manual/en/mysqli-result.free.php
+
+
+http://php.net/manual/en/mysqli-result.fetch-row.php
+http://php.net/manual/en/mysqli-result.fetch-object.php
 
 
