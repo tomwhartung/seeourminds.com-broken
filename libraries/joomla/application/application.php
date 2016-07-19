@@ -94,51 +94,77 @@ class JApplication extends JObject
 	 */
 	public function __construct($config = array())
 	{
+echo 'JApplication constructor checkpoint 1<br />';
+
 		jimport('joomla.utilities.utility');
 		jimport('joomla.error.profiler');
 
+echo 'JApplication constructor checkpoint 4<br />';
+
 		// Set the view name.
 		$this->_name = $this->getName();
+
+echo 'JApplication constructor checkpoint 8<br />';
 
 		// Only set the clientId if available.
 		if (isset($config['clientId'])) {
 			$this->_clientId = $config['clientId'];
 		}
 
+echo 'JApplication constructor checkpoint 12<br />';
+
 		// Enable sessions by default.
 		if (!isset($config['session'])) {
 			$config['session'] = true;
 		}
+
+echo 'JApplication constructor checkpoint 16<br />';
 
 		// Create the input object
 		if (class_exists('JInput')) {
 			$this->input = new JInput;
 		}
 
+echo 'JApplication constructor checkpoint 20<br />';
+
 		// Set the session default name.
 		if (!isset($config['session_name'])) {
 			$config['session_name'] = $this->_name;
 		}
+
+echo 'JApplication constructor checkpoint 24<br />';
 
 		// Set the default configuration file.
 		if (!isset($config['config_file'])) {
 			$config['config_file'] = 'configuration.php';
 		}
 
+echo 'JApplication constructor checkpoint 28<br />';
+
 		// Create the configuration object.
 		if (file_exists(JPATH_CONFIGURATION . '/' . $config['config_file'])) {
 			$this->_createConfiguration(JPATH_CONFIGURATION . '/' . $config['config_file']);
 		}
 
+echo 'JApplication constructor checkpoint 32<br />';
+
 		// Create the session if a session name is passed.
 		if ($config['session'] !== false) {
+echo 'JApplication constructor checkpoint 33<br />';
 			$this->_createSession(JUtility::getHash($config['session_name']));
+echo 'JApplication constructor checkpoint 34<br />';
 		}
+
+echo 'JApplication constructor checkpoint 36<br />';
 
 		$this->set('requestTime', gmdate('Y-m-d H:i'));
 
+echo 'JApplication constructor checkpoint 40<br />';
+
 		// Used by task system to ensure that the system doesn't go over time.
 		$this->set('startTime', JProfiler::getmicrotime());
+
+echo 'JApplication constructor checkpoint 44<br />';
 	}
 
 	/**
@@ -157,30 +183,51 @@ class JApplication extends JObject
 	{
 		static $instances;
 
+echo 'JApplication - getInstance - checkpoint 1<br />';
+
 		if (!isset($instances)) {
+echo 'JApplication - getInstance - checkpoint 3<br />';
 			$instances = array();
 		}
 
+echo 'JApplication - getInstance - checkpoint 5<br />';
+
 		if (empty($instances[$client])) {
 			// Load the router object.
+echo 'JApplication - getInstance - checkpoint 7<br />';
 			jimport('joomla.application.helper');
+echo 'JApplication - getInstance - checkpoint 9<br />';
 			$info = JApplicationHelper::getClientInfo($client, true);
 
+echo 'JApplication - getInstance - checkpoint 11<br />';
 			$path = $info->path . '/includes/application.php';
+echo 'JApplication - getInstance - checkpoint 13<br />';
 			if (file_exists($path)) {
+echo 'JApplication - getInstance - checkpoint 15<br />';
 				require_once $path;
 
+echo 'JApplication - getInstance - checkpoint 17<br />';
 				// Create a JRouter object.
 				$classname = $prefix.ucfirst($client);
+echo 'JApplication - getInstance - checkpoint 18; classname = ' . $classname . '<br />';
+echo '==========<br />';
+print_r( $config );
+echo '==========<br />';
 				$instance = new $classname($config);
+echo 'JApplication - getInstance - checkpoint 19<br />';
 			}
 			else {
+echo 'JApplication - getInstance - checkpoint 21<br />';
 				$error = JError::raiseError(500, JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $client));
 				return $error;
 			}
 
+echo 'JApplication - getInstance - checkpoint 23<br />';
+
 			$instances[$client] = &$instance;
 		}
+
+echo 'JApplication - getInstance - checkpoint 25<br />';
 
 		return $instances[$client];
 	}
@@ -963,6 +1010,7 @@ class JApplication extends JObject
 	 */
 	protected function _createSession($name)
 	{
+echo 'JApplication _createSession checkpoint 1<br />';
 		$options = array();
 		$options['name'] = $name;
 
@@ -985,7 +1033,9 @@ class JApplication extends JObject
 
 		//TODO: At some point we need to get away from having session data always in the db.
 
+echo 'JApplication _createSession checkpoint 10<br />';
 		$db = JFactory::getDBO();
+echo 'JApplication _createSession checkpoint 20<br />';
 
 		// Remove expired sessions from the database.
 		$time = time();
@@ -997,18 +1047,24 @@ class JApplication extends JObject
 				'DELETE FROM '.$query->qn('#__session') .
 				' WHERE '.$query->qn('time').' < '.(int) ($time - $session->getExpire())
 			);
+echo 'JApplication _createSession checkpoint 30<br />';
 			$db->query();
+echo 'JApplication _createSession checkpoint 33<br />';
 		}
 
+echo 'JApplication _createSession checkpoint 40<br />';
 		// Check to see the the session already exists.
 		if (($this->getCfg('session_handler') != 'database' && ($time % 2 || $session->isNew()))
 			||
 			($this->getCfg('session_handler') == 'database' && $session->isNew())
 		)
 		{
+echo 'JApplication _createSession checkpoint 43<br />';
 			$this->checkSession();
+echo 'JApplication _createSession checkpoint 46<br />';
 		}
 
+echo 'JApplication _createSession checkpoint 50<br />';
 		return $session;
 	}
 
@@ -1024,10 +1080,12 @@ class JApplication extends JObject
 	 */
 	public function checkSession()
 	{
+echo 'JApplication checkSession checkpoint 10<br />';
 		$db 		= JFactory::getDBO();
 		$session 	= JFactory::getSession();
 		$user		= JFactory::getUser();
 
+echo 'JApplication checkSession checkpoint 20<br />';
 		$query = $db->getQuery(true);
 		$db->setQuery(
 			'SELECT '.$query->qn('session_id') .
@@ -1036,6 +1094,7 @@ class JApplication extends JObject
 		);
 		$exists = $db->loadResult();
 
+echo 'JApplication checkSession checkpoint 30<br />';
 		// If the session record doesn't exist initialise it.
 		if (!$exists) {
 			if ($session->isNew()) {
@@ -1051,16 +1110,21 @@ class JApplication extends JObject
 				);
 			}
 
+echo 'JApplication checkSession checkpoint 40<br />';
 			// If the insert failed, exit the application.
 			if (!$db->query()) {
+echo 'JApplication checkSession checkpoint 44<br />';
 				jexit($db->getErrorMSG());
+echo 'JApplication checkSession checkpoint 46<br />';
 			}
 
+echo 'JApplication checkSession checkpoint 50<br />';
 			// Session doesn't exist yet, so create session variables
 			if ($session->isNew()) {
 				$session->set('registry',	new JRegistry('session'));
 				$session->set('user',		new JUser());
 			}
+echo 'JApplication checkSession checkpoint 60<br />';
 		}
 	}
 
