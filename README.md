@@ -2,7 +2,47 @@
 
 Code used on the seeourminds.com site - most of it, anyway.
 
-### Files Changed
+### Status
+
+We made the changes detailed below, but there are still issues with running this code on PHP 7, so we are abandoning this work for now.
+
+#### New Branch: "checkpoints"
+
+A big issue with all this is whitescreening without any error messages (including in the apache error log file).
+
+In an effort to try to track down the issues "manually," we added some checkpoint displays to key files:
+
+* index.php
+
+* libraries/joomla/application/application.php
+
+* libraries/joomla/factory.php
+
+To run the code with these checkpoints, checkout the checkpoints branch
+
+```
+git checkout checkpoints
+git branch        # note that branch checkpoints is now active
+git status
+more index.php    # see the checkpoints in the code (and when you access the site in the browser)
+```
+
+*THIS CODE IS EXPERIMENTAL!!  DO NOT MERGE THIS CODE WITH THE MAIN BRANCH!!*
+
+#### Returning to the "master" Branch
+
+To return to the baseline code in the master branch:
+
+```
+git checkout master
+git branch        # note that master branch is now active
+git status
+more index.php    # see that the code no longer displays checkpoints when you access the site in the browser
+```
+
+### Changes Made
+
+#### Files Changed
 
 libraries/joomla/database/database/mysql.php
 libraries/simplepie/simplepie.php
@@ -66,7 +106,11 @@ libraries/simplepie/simplepie.php
 
 ### References
 
+A general reference:
+
 http://www.bestwebframeworks.com/tutorials/php/36/solve-mysql-extension-is-deprecated--will-be-removed-in-the-future-of-php/
+
+#### MySql Functions
 
 http://php.net/manual/en/function.mysql-connect.php
 http://php.net/manual/en/function.mysql-select-db.php
@@ -85,6 +129,7 @@ http://php.net/manual/en/function.mysql-fetch-row.php
 http://php.net/manual/en/function.mysql-fetch-object.php
 http://php.net/manual/en/function.mysql-free-result.php
 
+#### MySqlI Functions
 
 http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
 http://php.net/manual/en/mysqli.select-db.php
@@ -102,5 +147,3 @@ http://php.net/manual/en/mysqli-result.fetch-assoc.php
 http://php.net/manual/en/mysqli-result.fetch-row.php
 http://php.net/manual/en/mysqli-result.fetch-object.php
 http://php.net/manual/en/mysqli-result.free.php
-
-
