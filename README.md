@@ -38,7 +38,7 @@ libraries/simplepie/simplepie.php
 | Y | mysql_query | mysqli_query | mysql.php | Checks version in 4 of 4 places; changed for PHP 7 only |
 | N | mysql_query | mysqli_query | simplepie.php | Contains 15 calls to mysql_query (*) |
 | | | | | | |
-| Y | mysql_real_escape_string | mysqli_real_escape_string | mysql.php | Checks version is 1 of 1 places; changed for PHP 7 only |
+| Y | mysql_real_escape_string | mysqli_real_escape_string | mysql.php | Checks version in 1 of 1 places; changed for PHP 7 only |
 | N | mysql_real_escape_string | mysqli_real_escape_string | simplepie.php | Contains 16 calls to mysql_real_escape_string (*) |
 | | | | | | |
 | Y | | mysql_errno | mysqli_errno | mysql.php | Changed in all 2 of 2 places |
@@ -50,6 +50,8 @@ libraries/simplepie/simplepie.php
 | Y | mysql_error | mysqli_error | mysql.php | Changed both of two uses |
 | Y | mysql_fetch_assoc | mysqli_fetch_assoc | mysql.php | Used in only one place |
 | Y | mysql_free_result | mysqli_free_result | mysql.php | Used in only one place |
+| Y | mysql_fetch_row | mysqli_fetch_row | mysql.php | Checks version in 1 of 1 places; changed for PHP 7 only |
+| Y | mysql_fetch_row | mysqli_fetch_row | mysql.php | Checks version in 1 of 1 places; changed for PHP 7 only |
 | | | | | | |
 | Y | mysql_affected_rows | mysqli_affected_rows | mysql.php | Used in only one place |
 | Y | mysql_affected_rows | mysqli_affected_rows | simplepie.php | Used in only one place |
@@ -57,15 +59,8 @@ libraries/simplepie/simplepie.php
 | Y | mysql_num_rows | mysqli_num_rows | mysql.php | Used in only one place |
 | Y | mysql_num_rows | mysqli_num_rows | simplepie.php | Changed both of two uses |
 | | | | | | |
-| Y | mysql_ | mysqli_
-| | | | | | |
-| | | | | | |
-| | | | | | |
 | N | mysql_result | mysqli_result | mysql.php | Not found in file |
 | N | mysql_result | mysqli_result | simplepie.php | Not found in file |
-
-| | mysql_ | mysqli_
-| | mysql_ | mysqli_
 
 (*) Once we started getting error messages about missing functions, we started focusing on fixing those in mysql.php.  It really looks like we are not using simplepie at this time, so I am reluctant to spend time on it, especially if it contains a lot of calls, and I have decided to check the PHP_MAJOR_VERSION, which seems like the thing to do.
 
@@ -86,10 +81,9 @@ http://php.net/manual/en/function.mysql-num-rows.php
 http://php.net/manual/en/function.mysql-insert-id.php
 http://php.net/manual/en/function.mysql-error.php
 http://php.net/manual/en/function.mysql-fetch-assoc.php
-http://php.net/manual/en/function.mysql-free-result.php
-
 http://php.net/manual/en/function.mysql-fetch-row.php
 http://php.net/manual/en/function.mysql-fetch-object.php
+http://php.net/manual/en/function.mysql-free-result.php
 
 
 http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
@@ -105,10 +99,8 @@ http://php.net/manual/en/mysqli-result.num-rows.php
 http://php.net/manual/en/mysqli.insert-id.php
 http://php.net/manual/en/mysqli.error.php
 http://php.net/manual/en/mysqli-result.fetch-assoc.php
-http://php.net/manual/en/mysqli-result.free.php
-
-
 http://php.net/manual/en/mysqli-result.fetch-row.php
 http://php.net/manual/en/mysqli-result.fetch-object.php
+http://php.net/manual/en/mysqli-result.free.php
 
 
