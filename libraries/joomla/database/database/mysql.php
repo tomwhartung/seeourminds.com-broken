@@ -226,7 +226,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function getAffectedRows()
 	{
-		return mysql_affected_rows($this->connection);
+		return mysqli_affected_rows($this->connection);
 	}
 
 	/**
@@ -298,7 +298,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function getNumRows($cursor = null)
 	{
-		return mysql_num_rows($cursor ? $cursor : $this->cursor);
+		return mysqli_num_rows($cursor ? $cursor : $this->cursor);
 	}
 
 	/**
@@ -465,7 +465,7 @@ class JDatabaseMySQL extends JDatabase
 	 */
 	public function insertid()
 	{
-		return mysql_insert_id($this->connection);
+		return mysqli_insert_id($this->connection);
 	}
 
 	/**
@@ -528,7 +528,7 @@ class JDatabaseMySQL extends JDatabase
 		// If an error occurred handle it.
 		if (!$this->cursor) {
 			$this->errorNum = (int) mysqli_errno($this->connection);
-			$this->errorMsg = (string) mysql_error($this->connection).' SQL='.$sql;
+			$this->errorMsg = (string) mysqli_error($this->connection).' SQL='.$sql;
 
 			// Legacy error handling switch based on the JError::$legacy switch.
 			// @deprecated  12.1
@@ -803,7 +803,7 @@ class JDatabaseMySQL extends JDatabase
 				if (!$this->cursor) {
 					$error = 1;
 					$this->errorNum .= mysqli_errno($this->connection) . ' ';
-					$this->errorMsg .= mysql_error($this->connection)." SQL=$query <br />";
+					$this->errorMsg .= mysqli_error($this->connection)." SQL=$query <br />";
 					if ($abortOnError) {
 						return $this->cursor;
 					}
