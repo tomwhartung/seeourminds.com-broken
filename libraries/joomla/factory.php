@@ -43,16 +43,25 @@ abstract class JFactory
 	 */
 	public static function getApplication($id = null, $config = array(), $prefix='J')
 	{
+		echo 'getApplication checkpoint 1';
+
 		if (!self::$application) {
+			echo 'getApplication checkpoint 4';
 			jimport('joomla.application.application');
+			echo 'getApplication checkpoint 8';
 
 			if (!$id) {
+				echo 'getApplication checkpoint 12';
 				JError::raiseError(500, 'Application Instantiation Error');
+				echo 'getApplication checkpoint 16';
 			}
 
+			echo 'getApplication checkpoint 20';
 			self::$application = JApplication::getInstance($id, $config, $prefix);
+			echo 'getApplication checkpoint 24';
 		}
 
+		echo 'getApplication checkpoint 30';
 		return self::$application;
 	}
 
