@@ -112,38 +112,38 @@ http://www.bestwebframeworks.com/tutorials/php/36/solve-mysql-extension-is-depre
 
 #### MySql Functions
 
-http://php.net/manual/en/function.mysql-connect.php
-http://php.net/manual/en/function.mysql-select-db.php
-http://php.net/manual/en/function.mysql-get-server-info.php
-http://php.net/manual/en/function.mysql-query.php
-http://php.net/manual/en/function.mysql-real-escape-string.php
-http://php.net/manual/en/function.mysql-errno.php
-http://php.net/manual/en/function.mysql-close.php
-http://php.net/manual/en/function.mysql-ping.php
-http://php.net/manual/en/function.mysql-affected-rows.php
-http://php.net/manual/en/function.mysql-num-rows.php
-http://php.net/manual/en/function.mysql-insert-id.php
-http://php.net/manual/en/function.mysql-error.php
-http://php.net/manual/en/function.mysql-fetch-assoc.php
-http://php.net/manual/en/function.mysql-fetch-row.php
-http://php.net/manual/en/function.mysql-fetch-object.php
-http://php.net/manual/en/function.mysql-free-result.php
+* http://php.net/manual/en/function.mysql-connect.php
+* http://php.net/manual/en/function.mysql-select-db.php
+* http://php.net/manual/en/function.mysql-get-server-info.php
+* http://php.net/manual/en/function.mysql-query.php
+* http://php.net/manual/en/function.mysql-real-escape-string.php
+* http://php.net/manual/en/function.mysql-errno.php
+* http://php.net/manual/en/function.mysql-close.php
+* http://php.net/manual/en/function.mysql-ping.php
+* http://php.net/manual/en/function.mysql-affected-rows.php
+* http://php.net/manual/en/function.mysql-num-rows.php
+* http://php.net/manual/en/function.mysql-insert-id.php
+* http://php.net/manual/en/function.mysql-error.php
+* http://php.net/manual/en/function.mysql-fetch-assoc.php
+* http://php.net/manual/en/function.mysql-fetch-row.php
+* http://php.net/manual/en/function.mysql-fetch-object.php
+* http://php.net/manual/en/function.mysql-free-result.php
 
 #### MySqlI Functions
 
-http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
-http://php.net/manual/en/mysqli.select-db.php
-http://php.net/manual/en/mysqli.get-server-info.php
-http://php.net/manual/en/mysqli.query.php
-http://php.net/manual/en/mysqli.real-escape-string.php
-http://php.net/manual/en/mysqli.errno.php
-http://php.net/manual/en/mysqli.close.php
-http://php.net/manual/en/mysqli.ping.php
-http://php.net/manual/en/mysqli.affected-rows.php
-http://php.net/manual/en/mysqli-result.num-rows.php
-http://php.net/manual/en/mysqli.insert-id.php
-http://php.net/manual/en/mysqli.error.php
-http://php.net/manual/en/mysqli-result.fetch-assoc.php
-http://php.net/manual/en/mysqli-result.fetch-row.php
-http://php.net/manual/en/mysqli-result.fetch-object.php
-http://php.net/manual/en/mysqli-result.free.php
+* http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
+* http://php.net/manual/en/mysqli.select-db.php
+* http://php.net/manual/en/mysqli.get-server-info.php
+* http://php.net/manual/en/mysqli.query.php
+* http://php.net/manual/en/mysqli.real-escape-string.php
+* http://php.net/manual/en/mysqli.errno.php
+* http://php.net/manual/en/mysqli.close.php
+* http://php.net/manual/en/mysqli.ping.php
+* http://php.net/manual/en/mysqli.affected-rows.php
+* http://php.net/manual/en/mysqli-result.num-rows.php
+* http://php.net/manual/en/mysqli.insert-id.php
+* http://php.net/manual/en/mysqli.error.php
+* http://php.net/manual/en/mysqli-result.fetch-assoc.php
+* http://php.net/manual/en/mysqli-result.fetch-row.php
+* http://php.net/manual/en/mysqli-result.fetch-object.php
+* http://php.net/manual/en/mysqli-result.free.php
