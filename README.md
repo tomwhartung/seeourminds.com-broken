@@ -46,6 +46,16 @@ libraries/simplepie/simplepie.php
 | | | | | | |
 | Y | mysql_close | mysqli_close | mysql.php | Used in only one place |
 | Y | mysql_ping | mysqli_ping | mysql.php | Used in only one place |
+| Y | mysql_insert_id | mysqli_insert_id | mysql.php | Used in only one place |
+| Y | mysql_error | mysqli_error | mysql.php | Changed both of two uses |
+| | mysql_ | mysqli_
+| | | | | | |
+| Y | mysql_affected_rows | mysqli_affected_rows | mysql.php | Used in only one place |
+| Y | mysql_affected_rows | mysqli_affected_rows | simplepie.php | Used in only one place |
+| | | | | | |
+| Y | mysql_num_rows | mysqli_num_rows | mysql.php | Used in only one place |
+| Y | mysql_num_rows | mysqli_num_rows | simplepie.php | Changed both of two uses |
+| | | | | | |
 | | | | | | |
 | | | | | | |
 | | | | | | |
@@ -69,6 +79,11 @@ http://php.net/manual/en/function.mysql-real-escape-string.php
 http://php.net/manual/en/function.mysql-errno.php
 http://php.net/manual/en/function.mysql-close.php
 http://php.net/manual/en/function.mysql-ping.php
+http://php.net/manual/en/function.mysql-affected-rows.php
+http://php.net/manual/en/function.mysql-num-rows.php
+http://php.net/manual/en/function.mysql-insert-id.php
+http://php.net/manual/en/function.mysql-error.php
+
 
 http://php.net/manual/en/function.mysqli-connect.php and http://php.net/manual/en/mysqli.construct.php
 http://php.net/manual/en/mysqli.select-db.php
@@ -78,5 +93,9 @@ http://php.net/manual/en/mysqli.real-escape-string.php
 http://php.net/manual/en/mysqli.errno.php
 http://php.net/manual/en/mysqli.close.php
 http://php.net/manual/en/mysqli.ping.php
+http://php.net/manual/en/mysqli.affected-rows.php
+http://php.net/manual/en/mysqli-result.num-rows.php
+http://php.net/manual/en/mysqli.insert-id.php
+http://php.net/manual/en/mysqli.error.php
 
 
